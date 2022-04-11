@@ -26,6 +26,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_202539) do
   create_table "rails_url_shortener_visits", force: :cascade do |t|
     t.integer "url_id"
     t.string "ip"
+    t.string "browser"
+    t.string "browser_version"
+    t.string "platform"
+    t.string "platform_version"
+    t.boolean "bot"
     t.string "user_agent"
     t.text "meta"
     t.datetime "created_at", null: false

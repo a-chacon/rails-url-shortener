@@ -5,8 +5,8 @@ Gem::Specification.new do |spec|
   spec.version     = RailsUrlShortener::VERSION
   spec.authors     = ["a-chacon"]
   spec.email       = ["andres.ch@protonmail.com"]
-  spec.homepage    = "https://www.github.com"
-  spec.summary     = "Summary of RailsUrlShortener."
+  spec.homepage    = "https://www.github.com/a-chacon/rails_url_shortener"
+  spec.summary     = "Simple url shortener engine."
   spec.description = "Description of RailsUrlShortener."
     spec.license     = "MIT"
 
@@ -15,12 +15,13 @@ Gem::Specification.new do |spec|
   spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
-  spec.metadata["source_code_uri"] = "https://www.github.com"
-  spec.metadata["changelog_uri"] = "https://www.github.com"
+  spec.metadata["source_code_uri"] = "https://www.github.com/a-chacon/rails_url_shortener"
+  spec.metadata["changelog_uri"] = "https://www.github.com/a-chacon/rails_url_shortener"
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
     Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   end
 
   spec.add_dependency "rails", ">= 7.0.2.3"
+  spec.add_dependency "browser", ">= 5.3.0"
 end
