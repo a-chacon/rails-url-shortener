@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_07_202539) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_11_163405) do
   create_table "rails_url_shortener_urls", force: :cascade do |t|
     t.string "owner_type"
     t.integer "owner_id"
@@ -36,6 +36,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_07_202539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["url_id"], name: "index_rails_url_shortener_visits_on_url_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
