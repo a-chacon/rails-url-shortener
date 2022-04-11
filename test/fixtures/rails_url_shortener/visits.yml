@@ -1,19 +1,20 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one:
-  url: one
-  ip: "192.168.8.1"
-  user_agent: "Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0"
-  meta: "Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0"
-# column: value
-#
-two:
-  url: one
-  ip: "192.168.8.1"
-  user_agent: "Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0"
-  meta: "Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0"
-# column: value
+# Dont repeat yourself
+# This data is generate with erb
+<%
+  numbers = ["one", "two", "three", "four", "five"]
+%>
+<% (0..5).each do |u|%>
+<% (0..5).each do |i| %>
+<% user_agent = Faker::Internet.user_agent %>
+<%=numbers[u]%>_<%=numbers[i]%>:
+  url: <%numbers[u]%>
+  ip: <% Faker::Internet.public_ip_v4_address %>
+  browser: <% Browser.new(user_agent).name %>
+  browser_version: <% Browser.new(user_agent).full_version %>
+  platform: <% Browser.new(user_agent).platform.name %>
+  platform_version: <% Browser.new(user_agent).platform.version %>
+  user_agent: <% user_agent %>
+  # this variable is not important for now
+  meta: "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15"
+<% end %>
+<% end %>

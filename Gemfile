@@ -8,5 +8,8 @@ gem "sqlite3"
 
 gem "sprockets-rails"
 
-# Start debugger with binding.b [https://github.com/ruby/debug]
-# gem "debug", ">= 1.0.0"
+gem "browser"
+
+group :test do
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+end

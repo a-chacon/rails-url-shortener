@@ -6,10 +6,25 @@
 #
 one:
   url: https://api.rubyonrails.org/v4.1.9/classes/Rails/Generators/Migration.html#method-i-migration_template
-  key: as12as
+  key: a22222
   category: docs
 #
 two:
   url: https://api.rubyonrails.org/v4.1.9/classes/Rails/Generators/Migration.html#method-i-migration_template
-  key: ae12s
+  key: a11111
   category: docs
+
+three:
+  url: https://api.rubyonrails.org/v4.1.9/classes/Rails/Generators/Migration.html#method-i-migration_template
+  key: aE1111
+  category: docs
+
+four:
+    url: https://github.com
+    key: aE1122
+    category: web
+
+five:
+    url: https://gitlab.com
+    key: aE1121
+    category: web
