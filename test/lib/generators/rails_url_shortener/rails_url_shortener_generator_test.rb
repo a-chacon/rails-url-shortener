@@ -1,9 +1,9 @@
 require "test_helper"
-require "generators/rails_url_shortener/initializer_generator"
+require "generators/rails_url_shortener/rails_url_shortener_generator"
 
 module RailsUrlShortener
-  class InitializerGeneratorTest < Rails::Generators::TestCase
-    tests InitializerGenerator
+  class RailsUrlShortenerGeneratorTest < Rails::Generators::TestCase
+    tests RailsUrlShortenerGenerator
     destination Rails.root.join("tmp/generators")
     setup :prepare_destination
 
