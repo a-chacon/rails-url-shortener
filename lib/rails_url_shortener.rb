@@ -8,7 +8,7 @@ module RailsUrlShortener
   CHARSETS = {
     alphanum: ('a'..'z').to_a + (0..9).to_a,
     alphacase: ('a'..'z').to_a + ('A'..'Z').to_a,
-    alphanumcase: ('a'..'z').to_a + ('A'..'Z').to_a + (0..9).to_a
+    alphanumcase: ('A'..'Z').to_a + ('a'..'z').to_a  + (0..9).to_a
   }
 
   ##
@@ -17,7 +17,7 @@ module RailsUrlShortener
 
   ##
   # charset for generate keys
-  mattr_accessor :charset, default: :alphanumcase
+  mattr_accessor :charset, default: CHARSETS[:alphanumcase]
 
   ##
   # default key length used by random keys
