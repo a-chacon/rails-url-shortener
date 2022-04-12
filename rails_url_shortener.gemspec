@@ -6,13 +6,9 @@ Gem::Specification.new do |spec|
   spec.authors     = ["a-chacon"]
   spec.email       = ["andres.ch@protonmail.com"]
   spec.homepage    = "https://www.github.com/a-chacon/rails_url_shortener"
-  spec.summary     = "Simple url shortener engine."
-  spec.description = "Description of RailsUrlShortener."
+  spec.summary     = "Rails url shortener engine."
+  spec.description = "A little engine for rails application that provide url shortener functions."
     spec.license     = "MIT"
-
-  # Prevent pushing this gem to RubyGems.org. To allow pushes either set the "allowed_push_host"
-  # to allow pushing to a single host or delete this section to allow pushing to any host.
-  spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://www.github.com/a-chacon/rails_url_shortener"

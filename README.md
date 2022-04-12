@@ -1,7 +1,7 @@
 # RailsUrlShortener
 
 A small rails engine for short urls.
-It could be used like a url shortener or a ip logger, it is your choice.
+It could be used like an url shortener or an IP logger, it is your choice.
 The app generate a short url for you and then (if you want) receive the requests and redirect to the original url.
 
 Why give your data to a third party app if you can do it by yourself?
@@ -31,7 +31,8 @@ RailsUrlShortener::Url.generate("https://www.github.com/a-chacon/rails_url_short
 
 ### Deeper
 
-By default this engine save all request made on your short url, you can use that data for some analitics or simple ip logger. So for get the data in a controller or do wherever you want you can use the Visit model related to a Url:
+By default, this engine save all request made on your short url, you can use that data for some analytics or simple IP logger. So for get the data in a controller or do wherever you want, you can use the Visit model related to an Url:
+
 ```ruby
 RailsUrlShortener::Url.find_by_key("key").visits # all visits
 
@@ -41,7 +42,7 @@ Or using the model class:
 RailsUrlShortener::Visit.all # all in database
 ```
 
-Also the Url model has a polymorphic relation with an owner that is optional. So you can relate an url whatever you want in your app adding the next relation in a model:
+Also, the Url model has a polymorphic relation with an owner that is optional. So you can relate an url whatever you want in your app, adding the next relation in a model:
 ```ruby
 has_many :urls, as: :owner
 ```
