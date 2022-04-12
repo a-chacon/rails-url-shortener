@@ -1,10 +1,10 @@
-# RailsUrlShortener
+# RailsUrlShortener (...in progress)
 
 A small rails engine for short urls.
 It could be used like a url shortener or a ip logger, it is your choice.
 The app generate a short url for you and then (if you want) receive the requests and redirect to the long url.
 
-Why give your data to a third party app if you can do it?
+Why give your data to a third party app if you can do it by yourself?
 
 ## Usage
 
@@ -15,13 +15,17 @@ mount RailsUrlShortener::Engine, at: "/rus"
 
 ```
 
-And generate the short links wherever you want using the method model provided for this engine:
+And generate the short links wherever you want using the helper method:
 
 ```ruby
-RailsUrlShortener::Url.generate("https://www.someurl.com")
+short_url("https://www.github.com/a-chacon/rails_url_shortener")
 ```
 
-So the thing is, this last method return to you something like `http://localhost:8080/rus/Abs2nd` and that address point to the original url
+or model methods provided for this engine:
+
+```ruby
+RailsUrlShortener::Url.generate("https://www.github.com/a-chacon/rails_url_shortener")
+```
 
 ### Deeper
 
@@ -42,6 +46,7 @@ has_many :urls, as: :owner
 ```
 
 ## Installation
+
 Add this line to your application's Gemfile:
 
 ```ruby
@@ -58,7 +63,7 @@ Then execute:
 $ bundle
 ```
 
-And finally copy the migrations and migrate:
+And finally install the migrations on your project and migrate:
 ```bash
 $ bin/rails rails_url_shortener:install:migrations db:migrate
 ```
