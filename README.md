@@ -1,35 +1,71 @@
 # RailsUrlShortener
 
-A small rails engine for short urls.
-It could be used like an url shortener or an IP logger, it is your choice.
-The app generate a short url for you and then (if you want) receive the requests and redirect to the original url.
+RailsUrlShortener is a small rails engine that provide your app with short URLs functionalities. Like a Bitly on your app. By default, RailsUrlShortener save the visits to your link for future interesting things that you may want to do.
 
 Why give your data to a third party app if you can do it by yourself?
 
+## Key features
+
+A few of the things you can do with RailsUrlShortener:
+
+* Generate unique keys for links.
+* Provide a method controller that find, save request information and does a 301 redirect to the original url.
+* The short links can be associated with a model in your app.
+* Save interesting things like browser, system and ip data of the 'un-shortened' request.
+* Temporal short links using the expires_at option.
+
 ## Usage
 
-Mount the controller on your app adding the next code on your config/routes.rb:
+### 1. Mount the engine
+
+Mount the engine on your app adding the next code on your config/routes.rb:
+
+**If you want to mount this on the root of your app, this should be on the bottom of your routes file.**
 
 ```ruby
 mount RailsUrlShortener::Engine, at: "/"
 
 ```
+### 2. Generate the short link
 
-And generate the short links wherever you want using the helper method:
+And generate the short links like you want:
+
+ - Using the helper method, this return the ready short link.
 
 ```ruby
 short_url("https://www.github.com/a-chacon/rails_url_shortener")
 ```
 
-or model method:
+ - Or model method, this return the object built. So you can save this on a variable, extract the key and build the short link by your own:
 
 ```ruby
 RailsUrlShortener::Url.generate("https://www.github.com/a-chacon/rails_url_shortener")
 ```
+### 3. Share the short link
 
-**Then share the short link.**
+**Then share the short link to your users or wherever you want.**
 
-### Deeper
+## Deeper
+
+Full params for the short_url helper:
+```ruby
+short_url(url, owner: nil, key: nil, expires_at: nil, category: nil, url_options: {})
+```
+Where:
+* **url**: Long url for short.
+* **owner**: Is a model of your app. You can relate an url whatever you want in your app.
+* **key**: Is a custom key that you want to set up.
+* **expires_at**: Is a datetime for expiration, after this the redirection doesn't work.
+* **category**: Tag that you want for that link.
+* **url_options**: Options for the url_for generator. Ex: subdomain or protocol.
+
+
+And the same for the generate model method except for url_options:
+```ruby
+RailsUrlShortener::Url.generate(url, owner: nil, key: nil, expires_at: nil, category: nil)
+```
+
+### Data saved
 
 By default, this engine save all request made on your short url, you can use that data for some analytics or simple IP logger. So for get the data in a controller or do wherever you want, you can use the Visit model related to an Url:
 
@@ -40,11 +76,6 @@ RailsUrlShortener::Url.find_by_key("key").visits # all visits
 Or using the model class:
 ```ruby
 RailsUrlShortener::Visit.all # all in database
-```
-
-Also, the Url model has a polymorphic relation with an owner that is optional. So you can relate an url whatever you want in your app, adding the next relation in a model:
-```ruby
-has_many :urls, as: :owner
 ```
 
 ## Installation
