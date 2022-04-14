@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  mount RailsUrlShortener::Engine => "/"
+  mount RailsUrlShortener::Engine => "/shortener"
 end
