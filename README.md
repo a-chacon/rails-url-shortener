@@ -101,11 +101,12 @@ And finally install the migrations on your project and migrate:
 bin/rails rails_url_shortener:install:migrations db:migrate
 ```
 
-If you want the initializer for configurations do:
+For the configurations generate the initializer whith this:
 
 ```bash
 rails generate RailsUrlShortener:initializer
 ```
+**Here is important to configure the host at least if your are not running your app in localhost**
 
 ## Contributing
 

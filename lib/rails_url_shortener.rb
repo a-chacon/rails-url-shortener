@@ -12,6 +12,10 @@ module RailsUrlShortener
   }
 
   ##
+  # host for build final url on helper
+  mattr_accessor :host, default: 'test.host'
+
+  ##
   # default redirection url when the key isn't found
   mattr_accessor :default_redirect, default: '/'
 
