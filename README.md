@@ -4,6 +4,8 @@ RailsUrlShortener is a small rails engine that provide your app with short URLs 
 
 Why give your data to a third party app if you can do it by yourself?
 
+You can see a **demo project** of what you can do with this engine [HERE]("https://paso-app.herokuapp.com/").
+
 ## Key features
 
 A few of the things you can do with RailsUrlShortener:
@@ -33,13 +35,13 @@ And generate the short links like you want:
  - Using the helper method, this return the ready short link.
 
 ```ruby
-short_url("https://www.github.com/a-chacon/rails_url_shortener")
+short_url("https://www.github.com/a-chacon/rails-url-shortener")
 ```
 
  - Or model method, this return the object built. So you can save this on a variable, extract the key and build the short link by your own:
 
 ```ruby
-RailsUrlShortener::Url.generate("https://www.github.com/a-chacon/rails_url_shortener")
+RailsUrlShortener::Url.generate("https://www.github.com/a-chacon/rails-url-shortener")
 ```
 ### 3. Share the short link
 
@@ -122,4 +124,4 @@ Don't forget to give the project a star! Thanks again!
 5. Open a Pull Request
 
 ## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [GPL-3.0 License](https://www.github.com/a-chacon/rails-url-shortener/blob/main/LICENSE).
