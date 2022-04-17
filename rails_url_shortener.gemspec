@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.homepage    = "https://www.github.com/a-chacon/rails-url-shortener"
   spec.summary     = "Rails url shortener engine."
   spec.description = "RailsUrlShortener is a simple engine that provide to your rail's app the functionalities for short URLs. Like bitly.com, but working on your project only."
-  spec.license     = "MIT"
+  spec.license     = "GPL-3.0"
 
   spec.required_ruby_version     = ">= 2.7.0"
   spec.required_rubygems_version = ">= 1.8.11"
@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   }
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+    Dir["{app,config,db,lib}/**/*", "LICENSE", "Rakefile", "README.md"]
   end
 
   spec.add_dependency "rails", ">= 7.0.2.3"
