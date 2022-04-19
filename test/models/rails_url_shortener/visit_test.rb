@@ -2,6 +2,7 @@ require 'test_helper'
 require 'json'
 module RailsUrlShortener
   class VisitTest < ActiveSupport::TestCase
+    include ActiveJob::TestHelper
     ##
     # Test basic of model visit
     #
@@ -21,7 +22,10 @@ module RailsUrlShortener
       request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for("/", "HTTP_HOST" => "test.host".b, "REMOTE_ADDR" => "1.0.0.0".b, "HTTP_USER_AGENT" => "Rails Testing".b, ))
       request.user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 11_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15"
       # implement the method
-      visit = Visit.parse_and_save(rails_url_shortener_urls(:one), request)
+      visit = nil
+      assert_enqueued_with(job: IpCrawlerJob) do
+        visit = Visit.parse_and_save(rails_url_shortener_urls(:one), request)
+      end
       # asserts
       assert visit.user_agent, request.user_agent
       assert visit.ip, request.ip
@@ -39,7 +43,9 @@ module RailsUrlShortener
       request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for("/", "HTTP_HOST" => "test.host".b, "REMOTE_ADDR" => "1.0.0.0".b, "HTTP_USER_AGENT" => "Rails Testing".b, ))
       request.user_agent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
       # asserts
-      assert_not Visit.parse_and_save(rails_url_shortener_urls(:one), request)
+      assert_no_enqueued_jobs do
+        assert_not Visit.parse_and_save(rails_url_shortener_urls(:one), request)
+      end
     end
 
   end

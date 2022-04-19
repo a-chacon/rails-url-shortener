@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_11_163405) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_18_184647) do
+  create_table "rails_url_shortener_ipgeos", force: :cascade do |t|
+    t.string "ip"
+    t.string "country"
+    t.string "country_code"
+    t.string "region"
+    t.string "region_name"
+    t.string "city"
+    t.string "lat"
+    t.string "lon"
+    t.string "timezone"
+    t.string "isp"
+    t.string "org"
+    t.string "as"
+    t.boolean "mobile"
+    t.boolean "proxy"
+    t.boolean "hosting"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "rails_url_shortener_urls", force: :cascade do |t|
     t.string "owner_type"
     t.integer "owner_id"
@@ -35,6 +55,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_11_163405) do
     t.text "meta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ipgeo_id"
+    t.index ["ipgeo_id"], name: "index_rails_url_shortener_visits_on_ipgeo_id"
     t.index ["url_id"], name: "index_rails_url_shortener_visits_on_url_id"
   end
 
