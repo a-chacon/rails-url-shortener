@@ -2,6 +2,7 @@ module RailsUrlShortener
   require 'json'
   class Visit < ApplicationRecord
     belongs_to :url
+    belongs_to :ipgeo, optional: true
 
     ##
     # Parse a request information and save
@@ -15,7 +16,7 @@ module RailsUrlShortener
         false
       else
         # save
-        Visit.create(
+        visit = Visit.create(
           url: url,
           ip: request.ip,
           browser: browser.name,
@@ -25,6 +26,9 @@ module RailsUrlShortener
           bot: browser.bot?,
           user_agent: request.headers['User-Agent']
         )
+        # We enqueue a job for get more data later
+        IpCrawlerJob.perform_later(visit)
+        visit
       end
     end
   end

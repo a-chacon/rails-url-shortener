@@ -13,4 +13,7 @@ gem "browser"
 group :test do
   gem 'byebug'
   gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+  gem "webmock"
 end
+
+gem "http"

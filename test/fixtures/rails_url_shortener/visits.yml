@@ -7,13 +7,14 @@
 <% (0..5).each do |i| %>
 <% user_agent = Faker::Internet.user_agent %>
 <%=numbers[u]%>_<%=numbers[i]%>:
-  url: <%numbers[u]%>
-  ip: <% Faker::Internet.public_ip_v4_address %>
-  browser: <% Browser.new(user_agent).name %>
-  browser_version: <% Browser.new(user_agent).full_version %>
-  platform: <% Browser.new(user_agent).platform.name %>
-  platform_version: <% Browser.new(user_agent).platform.version %>
-  user_agent: <% user_agent %>
+  url: <%= numbers[u]%>
+  ip: <%= Faker::Internet.public_ip_v4_address %>
+  browser: <%= Browser.new(user_agent).name %>
+  browser_version: <%= Browser.new(user_agent).full_version %>
+  platform: <%= Browser.new(user_agent).platform.name %>
+  platform_version: <%= Browser.new(user_agent).platform.version %>
+  user_agent: <%= user_agent %>
+  ipgeo: one
   # this variable is not important for now
   meta: "Mozilla/5.0 (Macintosh; Intel Mac OS X 11_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15"
 <% end %>
