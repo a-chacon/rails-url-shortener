@@ -30,8 +30,7 @@ module RailsUrlShortener
         "hosting": false
       }), headers: {})
 
-      visit = rails_url_shortener_visits(:one_one)
-      visit.update(ip: "24.48.0.1")
+      visit = Visit.create(ip: "24.48.0.1", url: rails_url_shortener_urls(:one))
 
       assert_difference("Ipgeo.count") do
         IpCrawlerJob.perform_now(visit)
