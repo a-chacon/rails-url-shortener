@@ -68,6 +68,7 @@ module RailsUrlShortener
 
       visit = rails_url_shortener_visits(:one_one)
       visit.update(ip: "66.90.76.179")
+      visit.ipgeo = nil
 
       assert_no_difference("Ipgeo.count") do
         IpCrawlerJob.perform_now(visit)
@@ -106,6 +107,7 @@ module RailsUrlShortener
       # prepare visit
       visit = rails_url_shortener_visits(:one_one)
       visit.update(ip: "66.90.76.179")
+      visit.ipgeo = nil
       # set a older updated at value
       ipgeo = rails_url_shortener_ipgeos(:one)
       ipgeo.update_columns(updated_at: Time.now - 4.months)
