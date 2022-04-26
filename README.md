@@ -15,6 +15,7 @@ A few of the things you can do with RailsUrlShortener:
 * The short links can be associated with a model in your app.
 * Save interesting things like browser, system and ip data of the 'un-shortened' request.
 * Temporal short links using the expires_at option.
+* Get IP data from third part service.
 
 ## Usage
 
@@ -79,6 +80,15 @@ Or using the model class:
 ```ruby
 RailsUrlShortener::Visit.all # all in database
 ```
+
+And a Visit is related to a Ipgeo model that contain information about the ip, so you can view this using the active record relation:
+```ruby
+RailsUrlShortener::Visit.first.ipgeo # Ipgeo object that contain information of the ip
+```
+
+### Ip data
+
+When a Visit record is created, a job is enqueue for get Ip data from [this](https://ip-api.com/) service and create the Ipgeo record. It is integrated to the free endpoint, so if you think that you have more than 45 different IPS querying in a minute to your app, we need to think in a new solution.
 
 ## Installation
 
