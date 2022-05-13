@@ -19,8 +19,9 @@ module RailsUrlShortener
 
     test 'parse and save' do
       # generate a fake request
-      request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for("/", "HTTP_HOST" => "test.host".b, "REMOTE_ADDR" => "1.0.0.0".b, "HTTP_USER_AGENT" => "Rails Testing".b, ))
-      request.user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 11_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15"
+      request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for('/', 'HTTP_HOST' => 'test.host'.b,
+                                                                                        'REMOTE_ADDR' => '1.0.0.0'.b, 'HTTP_USER_AGENT' => 'Rails Testing'.b))
+      request.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15'
       # implement the method
       visit = nil
       assert_enqueued_with(job: IpCrawlerJob) do
@@ -40,13 +41,13 @@ module RailsUrlShortener
       # set the configuration
       RailsUrlShortener.save_bots_visits = false
       # generate a fake request
-      request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for("/", "HTTP_HOST" => "test.host".b, "REMOTE_ADDR" => "1.0.0.0".b, "HTTP_USER_AGENT" => "Rails Testing".b, ))
-      request.user_agent = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+      request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for('/', 'HTTP_HOST' => 'test.host'.b,
+                                                                                        'REMOTE_ADDR' => '1.0.0.0'.b, 'HTTP_USER_AGENT' => 'Rails Testing'.b))
+      request.user_agent = 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)'
       # asserts
       assert_no_enqueued_jobs do
         assert_not Visit.parse_and_save(rails_url_shortener_urls(:one), request)
       end
     end
-
   end
 end

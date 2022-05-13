@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUrlShortener
   module UrlsHelper
     ##
@@ -19,8 +21,8 @@ module RailsUrlShortener
       if url_object.errors.empty?
         # options for url_for
         options = {
-          controller: "rails_url_shortener/urls",
-          action: "show",
+          controller: 'rails_url_shortener/urls',
+          action: 'show',
           key: url_object.key,
           host: RailsUrlShortener.host
         }.merge(url_options)

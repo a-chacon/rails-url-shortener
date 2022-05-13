@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUrlShortener
   class IpCrawlerJob < ApplicationJob
     queue_as :default
@@ -13,7 +15,7 @@ module RailsUrlShortener
     def perform(visit)
       if Ipgeo.exists?(ip: visit.ip)
         ipgeo = Ipgeo.find_by(ip: visit.ip)
-        if Ipgeo.find_by(ip: visit.ip).updated_at <= Time.now - 3.months
+        if Ipgeo.find_by(ip: visit.ip).updated_at <= 3.months.ago
           # Then update
           ip = HTTP.get("http://ip-api.com/json/#{visit.ip}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,mobile,proxy,hosting,query")
           if ip.code == 200
@@ -34,7 +36,7 @@ module RailsUrlShortener
         end
       end
     rescue Exception => e
-      print('Error' + e.to_s)
+      Rails.logger.debug { "Error#{e}" }
     end
   end
 end

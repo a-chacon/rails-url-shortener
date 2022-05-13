@@ -1,15 +1,16 @@
-require "rails_url_shortener/version"
-require "rails_url_shortener/engine"
+# frozen_string_literal: true
+
+require 'rails_url_shortener/version'
+require 'rails_url_shortener/engine'
 
 module RailsUrlShortener
-
   ##
   # constants
   CHARSETS = {
     alphanum: ('a'..'z').to_a + (0..9).to_a,
     alphacase: ('a'..'z').to_a + ('A'..'Z').to_a,
-    alphanumcase: ('A'..'Z').to_a + ('a'..'z').to_a  + (0..9).to_a
-  }
+    alphanumcase: ('A'..'Z').to_a + ('a'..'z').to_a + (0..9).to_a
+  }.freeze
 
   ##
   # host for build final url on helper
@@ -37,5 +38,4 @@ module RailsUrlShortener
   # so if you put this configuration like false could lose some visits to your link
   # by default saving all requests
   mattr_accessor :save_bots_visits, default: true
-
 end

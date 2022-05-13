@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUrlShortener
   class Url < ApplicationRecord
     # variables
@@ -14,9 +16,9 @@ module RailsUrlShortener
     # exclude records in which expiration time is set and expiration time is greater than current time
     scope :unexpired, -> { where(arel_table[:expires_at].eq(nil).or(arel_table[:expires_at].gt(::Time.current))) }
 
+    after_initialize :set_attr
     # callbacks
     before_validation :generate_key
-    after_initialize :set_attr
 
     ##
     # set default instance variables values

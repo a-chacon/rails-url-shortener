@@ -21,6 +21,7 @@ class CreateRailsUrlShortenerIpgeos < ActiveRecord::Migration[7.0]
     add_column :rails_url_shortener_visits, :ipgeo_id, :integer
     add_index :rails_url_shortener_visits, :ipgeo_id
   end
+
   def down
     remove_column :rails_url_shortener_visits, :ipgeo_id
     drop_table :rails_url_shortener_ipgeos

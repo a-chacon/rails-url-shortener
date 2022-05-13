@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUrlShortener
   require 'json'
   class Visit < ApplicationRecord
