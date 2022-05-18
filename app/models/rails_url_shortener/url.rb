@@ -7,7 +7,7 @@ module RailsUrlShortener
 
     # relations
     belongs_to :owner, polymorphic: true, optional: true
-    has_many :visits
+    has_many :visits, dependent: :nullify
 
     # validations
     validates :key, presence: true, length: { minimum: RailsUrlShortener.minimum_key_length }, uniqueness: true
@@ -76,14 +76,14 @@ module RailsUrlShortener
     end
 
     def generate_key
-      if key.nil?
-        loop do
-          # plus to the key length if after 10 attempts was not found a candidate
-          self.key_length += 1 if generating_retries >= 10
-          self.key = key_candidate
-          self.generating_retries += 1
-          break unless self.class.exists?(key: key)
-        end
+      return unless key.nil?
+
+      loop do
+        # plus to the key length if after 10 attempts was not found a candidate
+        self.key_length += 1 if generating_retries >= 10
+        self.key = key_candidate
+        self.generating_retries += 1
+        break unless self.class.exists?(key: key)
       end
     end
   end

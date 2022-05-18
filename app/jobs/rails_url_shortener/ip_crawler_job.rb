@@ -35,7 +35,7 @@ module RailsUrlShortener
           visit.update(ipgeo: ipgeo)
         end
       end
-    rescue Exception => e
+    rescue StandarError => e
       Rails.logger.debug { "Error#{e}" }
     end
   end

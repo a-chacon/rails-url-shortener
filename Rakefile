@@ -8,3 +8,18 @@ load 'rails/tasks/engine.rake'
 load 'rails/tasks/statistics.rake'
 
 require 'bundler/gem_tasks'
+
+Rake::TestTask.new(:test) do |t|
+  t.warning = false
+  t.libs << 'test'
+  t.libs << 'lib'
+  t.test_files = FileList['test/**/test_*.rb']
+end
+
+require 'rubocop/rake_task'
+
+RuboCop::RakeTask.new do |task|
+  task.requires << 'rubocop-minitest'
+end
+
+task default: %i[test rubocop]
