@@ -1,8 +1,26 @@
-require "bundler/setup"
+# frozen_string_literal: true
 
-APP_RAKEFILE = File.expand_path("test/dummy/Rakefile", __dir__)
-load "rails/tasks/engine.rake"
+require 'bundler/setup'
 
-load "rails/tasks/statistics.rake"
+APP_RAKEFILE = File.expand_path('test/dummy/Rakefile', __dir__)
+load 'rails/tasks/engine.rake'
 
-require "bundler/gem_tasks"
+load 'rails/tasks/statistics.rake'
+
+require 'bundler/gem_tasks'
+require 'rake/testtask'
+
+Rake::TestTask.new(:test) do |t|
+  t.warning = false
+  t.libs << 'test'
+  t.libs << 'lib'
+  t.test_files = FileList['test/**/*test.rb']
+end
+
+require 'rubocop/rake_task'
+
+RuboCop::RakeTask.new do |task|
+  task.requires << 'rubocop-minitest'
+end
+
+task default: %i[test rubocop]

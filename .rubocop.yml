@@ -1,0 +1,27 @@
+require: rubocop-rails
+
+
+AllCops:
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/{rails,rake}'
+    - 'test/**/*'
+
+
+Metrics/BlockLength:
+  Max: 30
+
+Metrics/ClassLength:
+  Max: 120
+
+Metrics/MethodLength:
+  Max: 30
+
+Metrics/ParameterLists:
+  Max: 6
+
+Style/Documentation:
+  Enabled: false

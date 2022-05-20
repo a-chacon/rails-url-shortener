@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RailsUrlShortener
   class UrlsController < ActionController::Metal
     include ActionController::StrongParameters
