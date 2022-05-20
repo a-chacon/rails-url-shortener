@@ -18,4 +18,5 @@ group :test do
 end
 
 gem 'rubocop', require: false
+gem 'rubocop-minitest', require: false
 gem 'rubocop-rails', require: false

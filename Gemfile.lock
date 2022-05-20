@@ -191,6 +191,8 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.18.0)
       parser (>= 3.1.1.0)
+    rubocop-minitest (0.19.1)
+      rubocop (>= 0.90, < 2.0)
     rubocop-rails (2.14.2)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
@@ -231,6 +233,7 @@ DEPENDENCIES
   rails (>= 7.0.2.3)
   rails_url_shortener!
   rubocop
+  rubocop-minitest
   rubocop-rails
   sprockets-rails
   sqlite3
