@@ -11,3 +11,20 @@ one:
   region:
   region_name: Metropolitana
   city: santiago
+
+two:
+  ip: 66.90.7.179
+  country_code: cl
+  country: chile
+  region:
+  region_name: Metropolitana
+  city: santiago
+  updated_at: 10-10-2020
+
+three:
+  ip: 66.90.76.182
+  country_code: cl
+  country: chile
+  region:
+  region_name: Metropolitana
+  city: Valparaiso
