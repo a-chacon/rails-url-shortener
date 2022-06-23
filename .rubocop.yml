@@ -10,7 +10,8 @@ AllCops:
     - 'bin/{rails,rake}'
     - 'test/**/*'
 
-
+Style/FrozenStringLiteralComment:
+  Enabled: false
 Metrics/BlockLength:
   Max: 30
 
