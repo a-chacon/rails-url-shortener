@@ -2,6 +2,7 @@
 
 require 'rails_url_shortener/version'
 require 'rails_url_shortener/engine'
+require 'rails_url_shortener/model'
 
 module RailsUrlShortener
   ##
@@ -38,4 +39,8 @@ module RailsUrlShortener
   # so if you put this configuration like false could lose some visits to your link
   # by default saving all requests
   mattr_accessor :save_bots_visits, default: true
+end
+
+ActiveSupport.on_load(:active_record) do
+  extend RailsUrlShortener::Model
 end
