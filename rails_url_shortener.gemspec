@@ -34,5 +34,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'browser', '>= 5.3.0'
   spec.add_dependency 'bundler', '>= 1.15.0'
-  spec.add_dependency 'http', '>= 5.0.4'
+  spec.add_dependency 'http', '>= 5.1.0'
 end

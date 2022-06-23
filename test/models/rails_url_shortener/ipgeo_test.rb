@@ -21,7 +21,7 @@ module RailsUrlShortener
           .with(headers: {
                   'Connection' => 'close',
                   'Host' => 'ip-api.com',
-                  'User-Agent' => 'http.rb/5.0.4'
+                  'User-Agent' => 'http.rb/5.1.0'
                 })
           .to_return(status: 200, body: %({
           "query": "#{ipgeo.ip}",
