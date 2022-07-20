@@ -108,7 +108,7 @@ Then execute:
 bundle
 ```
 
-And finally install the migrations on your project and migrate:
+And finally install & run the migrations on your project and migrate:
 ```bash
 bin/rails rails_url_shortener:install:migrations db:migrate
 ```
