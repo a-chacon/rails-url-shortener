@@ -14,6 +14,7 @@ gem 'sprockets-rails'
 group :test do
   gem 'byebug'
   gem 'faker'
+  gem 'vcr'
   gem 'webmock'
 end
 

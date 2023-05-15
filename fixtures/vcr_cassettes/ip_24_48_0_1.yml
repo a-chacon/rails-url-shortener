@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ip-api.com/json/24.48.0.1?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,mobile,proxy,hosting,query
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - ip-api.com
+      User-Agent:
+      - http.rb/5.1.1
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 15 May 2023 02:59:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '340'
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ttl:
+      - '60'
+      X-Rl:
+      - '44'
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","country":"Canada","countryCode":"CA","region":"QC","regionName":"Quebec","city":"Montreal","zip":"H2L","lat":45.5212,"lon":-73.5524,"timezone":"America/Toronto","isp":"Le
+        Groupe Videotron Ltee","org":"Videotron Ltee","as":"AS5769 Videotron Telecom
+        Ltee","mobile":false,"proxy":false,"hosting":false,"query":"24.48.0.1"}'
+  recorded_at: Mon, 15 May 2023 02:59:18 GMT
+recorded_with: VCR 6.1.0
