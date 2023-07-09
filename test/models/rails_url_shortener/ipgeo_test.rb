@@ -2,9 +2,8 @@ require 'test_helper'
 
 module RailsUrlShortener
   class IpgeoTest < ActiveSupport::TestCase
-
     test 'create only with ip' do
-        assert Ipgeo.create(ip:'13.13.13.13')
+      assert Ipgeo.create(ip: '13.13.13.13')
     end
 
     test 'create' do
@@ -15,37 +14,13 @@ module RailsUrlShortener
     end
 
     test 'update from remote' do
-        ipgeo = rails_url_shortener_ipgeos(:three)
+      ipgeo = rails_url_shortener_ipgeos(:three)
 
-        stub_request(:get, "http://ip-api.com/json/#{ipgeo.ip}?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,mobile,proxy,hosting,query")
-          .with(headers: {
-                  'Connection' => 'close',
-                  'Host' => 'ip-api.com',
-                  'User-Agent' => 'http.rb/5.1.0'
-                })
-          .to_return(status: 200, body: %({
-          "query": "#{ipgeo.ip}",
-          "status": "success",
-          "country": "Canada",
-          "countryCode": "CA",
-          "region": "QC",
-          "regionName": "Quebec",
-          "city": "Montreal",
-          "zip": "H3G",
-          "lat": 45.4995,
-          "lon": -73.5848,
-          "timezone": "America/Toronto",
-          "isp": "Le Groupe Videotron Ltee",
-          "org": "Videotron Ltee",
-          "as": "AS5769 Videotron Telecom Ltee",
-          "mobile": false,
-          "proxy": false,
-          "hosting": false
-        }), headers: {})
-
-        assert_equal "Valparaiso", ipgeo.city
+      assert_equal 'Valparaiso', ipgeo.city
+      VCR.use_cassette("ipgeo-#{ipgeo.ip}") do
         ipgeo.update_from_remote
-        assert_equal "Montreal", ipgeo.city
+      end
+      assert_equal 'Santiago', ipgeo.city
     end
   end
 end

@@ -13,8 +13,12 @@ gem 'sprockets-rails'
 
 group :test do
   gem 'byebug'
+
   gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+
   gem 'webmock'
+
+  gem 'vcr'
 end
 
 gem 'rubocop', require: false
