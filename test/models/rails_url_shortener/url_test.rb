@@ -75,5 +75,10 @@ module RailsUrlShortener
       assert_equal url.errors.first.attribute, :key
       assert_equal url.errors.first.type, :taken
     end
+
+    test 'to short url' do
+      url = Url.generate('https://github.com/a-chacon/rails_url_shortener', key: 'aE1111')
+      assert_equal url.to_short_url, 'https://example.com/shortener/aE1111'
+    end
   end
 end
