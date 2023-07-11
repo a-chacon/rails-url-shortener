@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://ip-api.com/json/66.90.76.182?fields=status,message,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as,mobile,proxy,hosting,query
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Connection:
+      - close
+      Host:
+      - ip-api.com
+      User-Agent:
+      - http.rb/5.1.0
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 09 Jul 2023 04:24:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '348'
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Ttl:
+      - '11'
+      X-Rl:
+      - '43'
+    body:
+      encoding: UTF-8
+      string: '{"status":"success","country":"Chile","countryCode":"CL","region":"RM","regionName":"Santiago
+        Metropolitan","city":"Santiago","zip":"34033","lat":-33.4521,"lon":-70.6536,"timezone":"America/Santiago","isp":"FDCservers.net","org":"FDCservers.net
+        LLC","as":"AS30058 FDCservers.net","mobile":false,"proxy":false,"hosting":false,"query":"66.90.76.182"}'
+  recorded_at: Sun, 09 Jul 2023 04:24:44 GMT
+recorded_with: VCR 6.2.0

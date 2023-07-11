@@ -13,9 +13,12 @@ gem 'sprockets-rails'
 
 group :test do
   gem 'byebug'
+
   gem 'faker'
-  gem 'vcr'
+  
   gem 'webmock'
+
+  gem 'vcr'
 end
 
 gem 'rubocop', require: false
