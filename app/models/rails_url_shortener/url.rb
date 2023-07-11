@@ -70,10 +70,10 @@ module RailsUrlShortener
     end
 
     ##
-    # Function fot help to build the full short url when you have the object.
+    # Function for help to build the full short url when you have the object.
     #
     def to_short_url
-      ENV.fetch('HOST') + Rails.application.routes.url_helpers.rails_url_shortener_path + "/#{key}"
+      RailsUrlShortener.host + Rails.application.routes.url_helpers.rails_url_shortener_path + "/#{key}"
     end
 
     private
