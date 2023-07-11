@@ -15,12 +15,11 @@ module RailsUrlShortener
 
     test 'update from remote' do
       ipgeo = rails_url_shortener_ipgeos(:three)
-
-      assert_equal 'Valparaiso', ipgeo.city
-      VCR.use_cassette("ipgeo-#{ipgeo.ip}") do
+      VCR.use_cassette("ip:#{ipgeo.ip}") do
+        assert_equal 'Valparaiso', ipgeo.city
         ipgeo.update_from_remote
+        assert_equal 'Santiago', ipgeo.city
       end
-      assert_equal 'Santiago', ipgeo.city
     end
   end
 end

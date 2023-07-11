@@ -3,6 +3,7 @@ Minitest::Cc.start_coverage
 
 # Configure Rails Environment
 ENV['RAILS_ENV'] = 'test'
+ENV['HOST'] = 'https://example.com'
 
 require_relative '../test/dummy/config/environment'
 ActiveRecord::Migrator.migrations_paths = [File.expand_path('../test/dummy/db/migrate', __dir__)]
