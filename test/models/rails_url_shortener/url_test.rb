@@ -78,7 +78,7 @@ module RailsUrlShortener
 
     test 'to short url' do
       url = Url.generate('https://github.com/a-chacon/rails_url_shortener', key: 'aE1111')
-      assert_equal url.to_short_url, 'https://example.com/shortener/aE1111'
+      assert_equal url.to_short_url, "#{RailsUrlShortener.host}/shortener/aE1111"
     end
   end
 end
