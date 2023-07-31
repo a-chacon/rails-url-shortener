@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: rails_url_shortener_urls
+#
+#  id         :integer          not null, primary key
+#  category   :string
+#  expires_at :datetime
+#  key        :string(10)       not null
+#  owner_type :string
+#  url        :text             not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  owner_id   :integer
+#
+# Indexes
+#
+#  index_rails_url_shortener_urls_on_owner  (owner_type,owner_id)
+#
 require 'test_helper'
 
 module RailsUrlShortener

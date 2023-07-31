@@ -1,5 +1,28 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: rails_url_shortener_ipgeos
+#
+#  id           :integer          not null, primary key
+#  as           :string
+#  city         :string
+#  country      :string
+#  country_code :string
+#  hosting      :boolean
+#  ip           :string
+#  isp          :string
+#  lat          :string
+#  lon          :string
+#  mobile       :boolean
+#  org          :string
+#  proxy        :boolean
+#  region       :string
+#  region_name  :string
+#  timezone     :string
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
 module RailsUrlShortener
   class Ipgeo < ApplicationRecord
     has_many :visits, dependent: :nullify

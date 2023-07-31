@@ -15,7 +15,7 @@ group :test do
   gem 'byebug'
 
   gem 'faker'
-  
+
   gem 'webmock'
 
   gem 'vcr'
@@ -26,3 +26,5 @@ gem 'rubocop-minitest', require: false
 gem 'rubocop-rails', require: false
 
 gem 'minitest-cc'
+
+gem 'annotate'

@@ -1,5 +1,28 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: rails_url_shortener_visits
+#
+#  id               :integer          not null, primary key
+#  bot              :boolean
+#  browser          :string
+#  browser_version  :string
+#  ip               :string
+#  meta             :text
+#  platform         :string
+#  platform_version :string
+#  user_agent       :string
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  ipgeo_id         :integer
+#  url_id           :integer
+#
+# Indexes
+#
+#  index_rails_url_shortener_visits_on_ipgeo_id  (ipgeo_id)
+#  index_rails_url_shortener_visits_on_url_id    (url_id)
+#
 module RailsUrlShortener
   require 'json'
   class Visit < ApplicationRecord
