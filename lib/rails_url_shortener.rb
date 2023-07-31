@@ -44,3 +44,11 @@ end
 ActiveSupport.on_load(:active_record) do
   extend RailsUrlShortener::Model
 end
+
+ActiveSupport.on_load(:action_view) do
+  prepend RailsUrlShortener::UrlsHelper
+end
+
+ActiveSupport.on_load(:action_controller_base) do
+  prepend RailsUrlShortener::UrlsHelper
+end
