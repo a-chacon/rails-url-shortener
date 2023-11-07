@@ -4,7 +4,7 @@ RailsUrlShortener is a small rails engine that provide your app with short URLs 
 
 Why give your data to a third party app if you can do it by yourself?
 
-You can see a **demo project** of what you can do with this engine [HERE](https://s.a-chacon.com/).
+You can see a **demo project** of what you can do with this engine [HERE](https://paso.fly.dev/).
 
 ## Key features
 
@@ -135,3 +135,5 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 The gem is available as open source under the terms of the [GPL-3.0 License](https://www.github.com/a-chacon/rails-url-shortener/blob/main/LICENSE).
+
+by: [a-chacon](https://a-chacon.com)
