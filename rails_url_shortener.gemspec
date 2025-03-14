@@ -11,7 +11,11 @@ Gem::Specification.new do |spec|
 
   spec.homepage    = 'https://www.github.com/a-chacon/rails-url-shortener'
   spec.summary     = 'Rails url shortener engine.'
-  spec.description = "RailsUrlShortener is a lightweight Rails engine that enables easy creation and management of short URLs within your project. Similar to bitly.com, it condenses long links into short, user-friendly addresses. Enhance your app's functionality with this simple yet powerful URL shortening solution."
+  spec.description = <<~DESC
+    RailsUrlShortener is a lightweight Rails engine that enables easy creation and management of short URLs within your project.#{' '}
+    Similar to bitly.com, it condenses long links into short, user-friendly addresses.#{' '}
+    Enhance your app's functionality with this simple yet powerful URL shortening solution.
+  DESC
   spec.license = 'GPL-3.0'
 
   spec.required_ruby_version     = '>= 2.7.0'

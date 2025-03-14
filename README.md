@@ -1,59 +1,53 @@
 # RailsUrlShortener
 
-RailsUrlShortener is a small rails engine that provide your app with short URLs functionalities. Like a Bitly on your app. By default, RailsUrlShortener save the visits to your link for future interesting things that you may want to do.
+RailsUrlShortener is a small Rails engine that provides your app with short URL functionality and IP logging capabilities - like having your own Bitly service. By default, RailsUrlShortener saves all visits to your links for future analysis or other interesting uses.
 
-Why give your data to a third party app if you can do it by yourself?
+Why give your data to a third-party app when you can manage it yourself?
 
 You can see a **demo project** of what you can do with this engine [HERE](https://paso.fly.dev/).
 
-## Key features
+## Key Features
 
-A few of the things you can do with RailsUrlShortener:
+Here are some of the things you can do with RailsUrlShortener:
 
-* Generate unique keys for links.
-* Provide a method controller that find, save request information and does a 301 redirect to the original url.
-* The short links can be associated with a model in your app.
-* Save interesting things like browser, system and ip data of the 'un-shortened' request.
-* Temporal short links using the expires_at option.
-* Get IP data from third part service.
+* Generate unique keys for links
+* Provide a controller method that finds, saves request information, and performs a 301 redirect to the original URL
+* Associate short links with models in your app
+* Save browser, system, and IP data from each request
+* Create temporary short links using the expires_at option
+* Get IP data from a third-party service
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Follow these steps to install and configure RailsUrlShortener:
+
+1. Add this line to your application's Gemfile:
 
 ```ruby
 gem "rails_url_shortener"
 ```
 
-Or install it yourself as:
+2. Install the gem by running:
 
 ```bash
-gem install rails_url_shortener
+bundle install
 ```
 
-Then execute:
-
-```bash
-bundle
-```
-
-And finally install & run the migrations on your project and migrate:
+3. Install and run the migrations:
 
 ```bash
 bin/rails rails_url_shortener:install:migrations db:migrate
 ```
 
-For the configurations generate the initializer whith this:
+4. Generate the initializer for configuration:
 
 ```bash
-rails generate RailsUrlShortener:initializer
+rails generate rails_url_shortener
 ```
-
-**Here is important to configure the host at least if your are not running your app in localhost**
 
 ## Usage
 
-### 1. Mount the engine
+1. Mount the engine
 
 Mount the engine on your app adding the next code on your config/routes.rb:
 
@@ -64,7 +58,7 @@ mount RailsUrlShortener::Engine, at: "/"
 
 ```
 
-### 2. Generate the short link
+2. Generate the short link
 
 And generate the short links like you want:
 
@@ -80,7 +74,7 @@ short_url("https://www.github.com/a-chacon/rails-url-shortener")
 RailsUrlShortener::Url.generate("https://www.github.com/a-chacon/rails-url-shortener")
 ```
 
-### 3. Share the short link
+3. Share the short link
 
 **Then share the short link to your users or wherever you want.**
 
@@ -94,43 +88,44 @@ short_url(url, owner: nil, key: nil, expires_at: nil, category: nil, url_options
 
 Where:
 
-* **url**: Long url for short.
-* **owner**: Is a model of your app. You can relate an url whatever you want in your app.
-* **key**: Is a custom key that you want to set up.
-* **expires_at**: Is a datetime for expiration, after this the redirection doesn't work.
-* **category**: Tag that you want for that link.
-* **url_options**: Options for the url_for generator. Ex: subdomain or protocol.
+* **url**: The long URL to be shortened
+* **owner**: A model from your app to associate with the URL
+* **key**: A custom key for the short URL (optional)
+* **expires_at**: Expiration datetime (after which the redirect won't work)
+* **category**: A tag for categorizing the link
+* **url_options**: Options for the URL generator (e.g., subdomain or protocol)
 
-And the same for the generate model method except for url_options:
+The `generate` model method accepts the same parameters except for `url_options`:
 
 ```ruby
 RailsUrlShortener::Url.generate(url, owner: nil, key: nil, expires_at: nil, category: nil)
 ```
 
-### Data saved
+### Data Collection
 
-By default, this engine save all request made on your short url, you can use that data for some analytics or simple IP logger. So for get the data in a controller or do wherever you want, you can use the Visit model related to an Url:
+By default, the engine saves all requests made to your short URLs. You can use this data for analytics or IP logging. To access the data:
 
-```ruby
-RailsUrlShortener::Url.find_by_key("key").visits # all visits
-
-```
-
-Or using the model class:
+1. Get visits for a specific URL:
 
 ```ruby
-RailsUrlShortener::Visit.all # all in database
+RailsUrlShortener::Url.find_by_key("key").visits
 ```
 
-And a Visit is related to a Ipgeo model that contain information about the ip, so you can view this using the active record relation:
+2. Get all visits:
 
 ```ruby
-RailsUrlShortener::Visit.first.ipgeo # Ipgeo object that contain information of the ip
+RailsUrlShortener::Visit.all
 ```
 
-### Ip data
+Each Visit is associated with an Ipgeo model that contains information about the IP address:
 
-When a Visit record is created, a job is enqueue for get Ip data from [this](https://ip-api.com/) service and create the Ipgeo record. It is integrated to the free endpoint, so if you think that you have more than 45 different IPS querying in a minute to your app, we need to think in a new solution.
+```ruby
+RailsUrlShortener::Visit.first.ipgeo
+```
+
+### IP Data Collection
+
+When a Visit record is created, a background job is enqueued to fetch IP data from the [ip-api.com](https://ip-api.com/) service and create an Ipgeo record. This uses the free endpoint, which has a limit of 45 different IPs per minute. If you expect higher traffic, you'll need to implement an alternative solution.
 
 ## Contributing
 
