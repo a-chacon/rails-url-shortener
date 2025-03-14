@@ -6,6 +6,8 @@ AllCops:
     - 'config/**/*'
     - 'bin/{rails,rake}'
     - 'test/**/*'
+    - "gemfiles/*"
+    - "vendor/**/*"
 
 Style/FrozenStringLiteralComment:
   Enabled: false

@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   DESC
   spec.license = 'GPL-3.0'
 
-  spec.required_ruby_version     = '>= 2.7.0'
+  spec.required_ruby_version = '>= 3.1'
   spec.required_rubygems_version = '>= 1.8.11'
 
   spec.metadata['homepage_uri'] = spec.homepage
@@ -36,6 +36,5 @@ Gem::Specification.new do |spec|
   end
 
   spec.add_dependency 'browser', '>= 5.3.0'
-  spec.add_dependency 'bundler', '>= 1.15.0'
   spec.add_dependency 'http', '>= 5.1.0'
 end

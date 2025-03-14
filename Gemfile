@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 # Specify your gem's dependencies in rails_url_shortener.gemspec.
 gemspec
 
-gem 'rails', '~> 7.0'
+gem 'rails', '~> 7.2'
 
 gem 'sqlite3'
 
@@ -23,7 +23,7 @@ group :test do
 end
 
 group :development, :test do
-  gem 'rubocop', require: false
+  gem 'rubocop'
 
   gem 'minitest-cc'
 end

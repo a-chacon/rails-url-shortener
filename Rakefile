@@ -17,10 +17,4 @@ Rake::TestTask.new(:test) do |t|
   t.test_files = FileList['test/**/*test.rb']
 end
 
-require 'rubocop/rake_task'
-
-RuboCop::RakeTask.new do |task|
-  task.requires << 'rubocop-minitest'
-end
-
-task default: %i[test rubocop]
+task default: %i[test]
