@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        gemfile: [rails-7.0, rails-7.1, rails-7.2, rails-8.0.0-beta1]
+        gemfile: [rails-7.0, rails-7.1, rails-7.2, rails-8.0]
     runs-on: ubuntu-latest
     env:
       RAILS_ENV: test
@@ -47,4 +47,4 @@ jobs:
       - name: Security audit application code
         run: brakeman -q -w2
       - name: Lint Ruby files
-        run: bundle exec rubocop --parallel
+        run: rubocop --parallel
