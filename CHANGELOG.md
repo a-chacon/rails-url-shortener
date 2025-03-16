@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/a-chacon/rails-url-shortener/compare/rails_url_shortener/v0.3.0...rails_url_shortener/v0.3.1) (2025-03-16)
+
+
+### Documentation
+
+* **readme:** add badges ([0c27b50](https://github.com/a-chacon/rails-url-shortener/commit/0c27b50f22c7079b80b70600b3126fcb67ec9474))
+
 ## [0.3.0](https://github.com/a-chacon/rails-url-shortener/compare/rails_url_shortener-v0.2.10...rails_url_shortener/v0.3.0) (2025-03-16)
 
 
