@@ -3,6 +3,7 @@
 require 'rails_url_shortener/version'
 require 'rails_url_shortener/engine'
 require 'rails_url_shortener/model'
+require_relative '../app/helpers/rails_url_shortener/urls_helper'
 
 module RailsUrlShortener
   ##

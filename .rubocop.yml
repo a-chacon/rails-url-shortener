@@ -1,14 +1,13 @@
-require: rubocop-rails
-
-
 AllCops:
-  TargetRubyVersion: 2.7
+  TargetRubyVersion:
   NewCops: enable
   Exclude:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/{rails,rake}'
     - 'test/**/*'
+    - "gemfiles/*"
+    - "vendor/**/*"
 
 Style/FrozenStringLiteralComment:
   Enabled: false

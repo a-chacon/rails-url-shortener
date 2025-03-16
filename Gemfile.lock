@@ -3,7 +3,6 @@ PATH
   specs:
     rails_url_shortener (0.2.10)
       browser (>= 5.3.0)
-      bundler (>= 1.15.0)
       http (>= 5.1.0)
 
 GEM
@@ -82,9 +81,6 @@ GEM
       tzinfo (~> 2.0, >= 2.0.5)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    annotate (3.2.0)
-      activerecord (>= 3.2, < 8.0)
-      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     base64 (0.2.0)
     benchmark (0.4.0)
@@ -144,7 +140,7 @@ GEM
       net-smtp
     marcel (1.0.4)
     mini_mime (1.1.5)
-    minitest (5.25.4)
+    minitest (5.25.5)
     minitest-cc (1.0.0)
     net-imap (0.5.6)
       date
@@ -156,7 +152,7 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.3-x86_64-linux-gnu)
+    nokogiri (1.18.4-x86_64-linux-gnu)
       racc (~> 1.4)
     parallel (1.26.3)
     parser (3.3.7.1)
@@ -215,7 +211,7 @@ GEM
     reline (0.6.0)
       io-console (~> 0.5)
     rexml (3.4.1)
-    rubocop (1.73.2)
+    rubocop (1.74.0)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.1.0)
@@ -226,18 +222,8 @@ GEM
       rubocop-ast (>= 1.38.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.38.1)
+    rubocop-ast (1.39.0)
       parser (>= 3.3.1.0)
-    rubocop-minitest (0.37.1)
-      lint_roller (~> 1.1)
-      rubocop (>= 1.72.1, < 2.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
-    rubocop-rails (2.30.3)
-      activesupport (>= 4.2.0)
-      lint_roller (~> 1.1)
-      rack (>= 1.1)
-      rubocop (>= 1.72.1, < 2.0)
-      rubocop-ast (>= 1.38.0, < 2.0)
     ruby-progressbar (1.13.0)
     securerandom (0.4.1)
     sprockets (4.2.1)
@@ -273,15 +259,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  annotate
   byebug
   faker
   minitest-cc
-  rails (>= 7.0.2.3)
+  rails (~> 7.2)
   rails_url_shortener!
   rubocop
-  rubocop-minitest
-  rubocop-rails
   sprockets-rails
   sqlite3
   vcr
