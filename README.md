@@ -1,3 +1,9 @@
+
+[![Ruby on Rails CI](https://github.com/a-chacon/rails-url-shortener/actions/workflows/rubyonrails.yml/badge.svg)](https://github.com/a-chacon/rails-url-shortener/actions/workflows/rubyonrails.yml)
+![Gem Version](https://img.shields.io/gem/v/rails_url_shortener)
+
+![GitHub License](https://img.shields.io/github/license/a-chacon/rails_url_shortener)
+
 # RailsUrlShortener
 
 RailsUrlShortener is a small Rails engine that provides your app with short URL functionality and IP logging capabilities - like having your own Bitly service. By default, RailsUrlShortener saves all visits to your links for future analysis or other interesting uses.
