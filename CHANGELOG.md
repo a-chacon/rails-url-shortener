@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/a-chacon/rails-url-shortener/compare/rails_url_shortener/v0.3.0...rails_url_shortener/v0.4.0) (2025-05-08)
+
+
+### Features
+
+* add referer to visits model ([84782f9](https://github.com/a-chacon/rails-url-shortener/commit/84782f9a6586350620db3357f746fbda48a1343f))
+* add referer to visits model ([a2759c4](https://github.com/a-chacon/rails-url-shortener/commit/a2759c4b2437d653db6f156a356e1a6f2cc28468))
+
+
+### Documentation
+
+* **readme:** add badges ([0c27b50](https://github.com/a-chacon/rails-url-shortener/commit/0c27b50f22c7079b80b70600b3126fcb67ec9474))
+
 ## [0.3.0](https://github.com/a-chacon/rails-url-shortener/compare/rails_url_shortener-v0.2.10...rails_url_shortener/v0.3.0) (2025-03-16)
 
 
