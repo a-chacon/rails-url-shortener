@@ -33,29 +33,27 @@ module RailsUrlShortener
     # Parse a request information and save
     #
     # Return boolean
-
+    # rubocop:disable Metrics/AbcSize
     def self.parse_and_save(url, request)
-      # browser detection
       browser(request)
-      if !RailsUrlShortener.save_bots_visits && @browser.bot?
-        false
-      else
-        # save
-        visit = Visit.create(
-          url: url,
-          ip: request.ip,
-          browser: @browser.name,
-          browser_version: @browser.full_version,
-          platform: @browser.platform.name,
-          platform_version: @browser.platform.version,
-          bot: @browser.bot?,
-          user_agent: request.headers['User-Agent']
-        )
-        # We enqueue a job for get more data later
-        IpCrawlerJob.perform_later(visit)
-        visit
-      end
+      return false if !RailsUrlShortener.save_bots_visits && @browser.bot?
+
+      visit = Visit.create(
+        url: url,
+        ip: request.ip,
+        browser: @browser.name,
+        browser_version: @browser.full_version,
+        platform: @browser.platform.name,
+        platform_version: @browser.platform.version,
+        bot: @browser.bot?,
+        user_agent: request.headers['User-Agent'],
+        referer: request.headers['Referer']
+      )
+
+      IpCrawlerJob.perform_later(visit)
+      visit
     end
+    # rubocop:enable Metrics/AbcSize
 
     def self.browser(request)
       @browser = Browser.new(request.headers['User-Agent'])

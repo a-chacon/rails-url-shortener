@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_18_184647) do
+ActiveRecord::Schema[7.0].define(version: 2025_05_08_120951) do
   create_table "rails_url_shortener_ipgeos", force: :cascade do |t|
     t.string "ip"
     t.string "country"
@@ -56,6 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_184647) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ipgeo_id"
+    t.string "referer", default: ""
     t.index ["ipgeo_id"], name: "index_rails_url_shortener_visits_on_ipgeo_id"
     t.index ["url_id"], name: "index_rails_url_shortener_visits_on_url_id"
   end
@@ -66,5 +67,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_184647) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 end

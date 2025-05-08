@@ -34,7 +34,8 @@ module RailsUrlShortener
         url: rails_url_shortener_urls(:one),
         ip: '192.168.8.1',
         user_agent: 'Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0',
-        meta: 'Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0'
+        meta: 'Mozilla/5.0 (X11; Linux x86_64; rv:89.0) Gecko/20100101 Firefox/89.0',
+        referer: 'https://example.com'
       )
       assert visit.save
       assert_equal visit.url, rails_url_shortener_urls(:one)
@@ -43,7 +44,8 @@ module RailsUrlShortener
     test 'parse and save' do
       # generate a fake request
       request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for('/', 'HTTP_HOST' => 'test.host'.b,
-                                                                                        'REMOTE_ADDR' => '1.0.0.0'.b, 'HTTP_USER_AGENT' => 'Rails Testing'.b))
+                                                                                        'REMOTE_ADDR' => '1.0.0.0'.b, 'HTTP_USER_AGENT' => 'Rails Testing'.b,
+                                                                                        'HTTP_REFERER' => 'https://example.com'.b))
       request.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15'
       # implement the method
       visit = nil
@@ -58,6 +60,7 @@ module RailsUrlShortener
       assert visit.browser_version, Browser.new(request.user_agent).full_version
       assert visit.platform, Browser.new(request.user_agent).platform.name
       assert visit.platform_version, Browser.new(request.user_agent).platform.version
+      assert visit.referer, request.headers['Referer']
     end
 
     test "don't save bots" do
