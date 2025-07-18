@@ -40,6 +40,8 @@ module RailsUrlShortener
   # so if you put this configuration like false could lose some visits to your link
   # by default saving all requests
   mattr_accessor :save_bots_visits, default: true
+
+  mattr_accessor :save_visits, default: true
 end
 
 ActiveSupport.on_load(:active_record) do
