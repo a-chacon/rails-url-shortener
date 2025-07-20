@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.5.0](https://github.com/a-chacon/rails-url-shortener/compare/rails_url_shortener/v0.4.0...rails_url_shortener/v0.5.0) (2025-07-20)
+
+
+### Features
+
+* let the initializer choose whether save or not visits. ([#20](https://github.com/a-chacon/rails-url-shortener/issues/20)) ([2f30898](https://github.com/a-chacon/rails-url-shortener/commit/2f3089886c6e6a7e2d26d80fb1596e1f7b327abc))
+
+
+### Bug Fixes
+
+* update dependencies and lint errors ([348c6f4](https://github.com/a-chacon/rails-url-shortener/commit/348c6f497a99382a594e21bd2a7307980289a1bc))
+
 ## [0.4.0](https://github.com/a-chacon/rails-url-shortener/compare/rails_url_shortener/v0.3.0...rails_url_shortener/v0.4.0) (2025-05-08)
 
 
