@@ -21,8 +21,6 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 3.1'
   spec.required_rubygems_version = '>= 1.8.11'
 
-  spec.metadata['homepage_uri'] = spec.homepage
-
   spec.metadata = {
     'bug_tracker_uri' => 'https://www.github.com/a-chacon/rails-url-shortener/issues',
     'changelog_uri' => "https://www.github.com/a-chacon/rails-url-shortener/releases/tag/v#{RailsUrlShortener::VERSION}",

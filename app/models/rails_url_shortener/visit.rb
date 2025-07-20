@@ -35,7 +35,8 @@ module RailsUrlShortener
     # Return boolean
     # rubocop:disable Metrics/AbcSize
     def self.parse_and_save(url, request)
-      return false if !RailsUrlShortener.save_visits
+      return false unless RailsUrlShortener.save_visits
+
       browser(request)
       return false if !RailsUrlShortener.save_bots_visits && @browser.bot?
 
