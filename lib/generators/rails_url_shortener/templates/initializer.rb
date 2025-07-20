@@ -12,3 +12,4 @@ RailsUrlShortener.charset = CHARSETS[:alphanumcase] # used for generate the keys
 RailsUrlShortener.key_length = 6                    # Key length for random generator
 RailsUrlShortener.minimum_key_length = 3            # minimum permited for a key
 RailsUrlShortener.save_bots_visits = false          # if save bots visits
+RailsUrlShortener.save_visits = true                # if save visits

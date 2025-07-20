@@ -74,6 +74,26 @@ module RailsUrlShortener
       assert_no_enqueued_jobs do
         assert_not Visit.parse_and_save(rails_url_shortener_urls(:one), request)
       end
+
+      RailsUrlShortener.save_bots_visits = true
+    end
+
+    test "don't save any" do
+      # set the configuration
+      RailsUrlShortener.save_visits = false
+
+      # generate a fake request
+      request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for('/', 'HTTP_HOST' => 'test.host'.b,
+                                                                                        'REMOTE_ADDR' => '1.0.0.0'.b, 'HTTP_USER_AGENT' => 'Rails Testing'.b,
+                                                                                        'HTTP_REFERER' => 'https://example.com'.b))
+      request.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15'
+
+      # asserts
+      assert_no_enqueued_jobs do
+        assert_not Visit.parse_and_save(rails_url_shortener_urls(:one), request)
+      end
+
+      RailsUrlShortener.save_visits = true
     end
   end
 end
