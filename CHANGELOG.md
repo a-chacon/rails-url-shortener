@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.0](https://github.com/a-chacon/rails-url-shortener/compare/rails_url_shortener/v0.5.0...rails_url_shortener/v0.6.0) (2025-10-20)
+
+
+### Features
+
+* **generator:** simplify installation by reducing setup steps ([#25](https://github.com/a-chacon/rails-url-shortener/issues/25)) ([303b178](https://github.com/a-chacon/rails-url-shortener/commit/303b1780fb1ecda0b014f72cbe122cdde7a1146e))
+
 ## [0.5.0](https://github.com/a-chacon/rails-url-shortener/compare/rails_url_shortener/v0.4.0...rails_url_shortener/v0.5.0) (2025-07-20)
 
 
