@@ -25,46 +25,37 @@ Here are some of the things you can do with RailsUrlShortener:
 
 ## Installation
 
-Follow these steps to install and configure RailsUrlShortener:
+Follow these steps to install and configure rails_url_shortener in your Rails application.
 
-1. Add this line to your application's Gemfile:
+1. Add the Gem
+Add the following line to your application's Gemfile:
 
 ```ruby
 gem "rails_url_shortener"
 ```
-
-2. Install the gem by running:
+2. Install the Gem
+Run the following command to install the gem:
 
 ```bash
 bundle install
 ```
-
-3. Install and run the migrations:
-
-```bash
-bin/rails rails_url_shortener:install:migrations db:migrate
-```
-
-4. Generate the initializer for configuration:
-
+3. Run the Generator
+Run the generator to set up the necessary files:
 ```bash
 rails generate rails_url_shortener
 ```
+This will:
+✅ Install and run the required migrations
+
+✅ Mount the engine
+An entry will be added to the bottom of your config/routes.rb file, mounting the engine at the root of your application.
+
+✅ Generate an initializer for further configuration`
+
 
 ## Usage
 
-1. Mount the engine
-
-Mount the engine on your app adding the next code on your config/routes.rb:
-
-**If you want to mount this on the root of your app, this should be on the bottom of your routes file.**
-
-```ruby
-mount RailsUrlShortener::Engine, at: "/"
-
-```
-
-2. Generate the short link
+1. Generate the short link
 
 And generate the short links like you want:
 
@@ -80,7 +71,7 @@ short_url("https://www.github.com/a-chacon/rails-url-shortener")
 RailsUrlShortener::Url.generate("https://www.github.com/a-chacon/rails-url-shortener")
 ```
 
-3. Share the short link
+2. Share the short link
 
 **Then share the short link to your users or wherever you want.**
 
