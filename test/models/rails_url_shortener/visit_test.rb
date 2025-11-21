@@ -42,6 +42,9 @@ module RailsUrlShortener
     end
 
     test 'parse and save' do
+      # Enable IP geocoding for this test
+      RailsUrlShortener.save_ip_geocode = true
+
       # generate a fake request
       request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for('/', 'HTTP_HOST' => 'test.host'.b,
                                                                                         'REMOTE_ADDR' => '1.0.0.0'.b, 'HTTP_USER_AGENT' => 'Rails Testing'.b,
@@ -61,6 +64,9 @@ module RailsUrlShortener
       assert visit.platform, Browser.new(request.user_agent).platform.name
       assert visit.platform_version, Browser.new(request.user_agent).platform.version
       assert visit.referer, request.headers['Referer']
+
+      # Reset to default
+      RailsUrlShortener.save_ip_geocode = false
     end
 
     test "don't save bots" do
@@ -94,6 +100,24 @@ module RailsUrlShortener
       end
 
       RailsUrlShortener.save_visits = true
+    end
+
+    test "don't save ip geocode by default" do
+      # IP geocoding is disabled by default, so this tests the default behavior
+      # generate a fake request
+      request = ActionDispatch::TestRequest.create(env = Rack::MockRequest.env_for('/', 'HTTP_HOST' => 'test.host'.b,
+                                                                                        'REMOTE_ADDR' => '1.0.0.0'.b, 'HTTP_USER_AGENT' => 'Rails Testing'.b,
+                                                                                        'HTTP_REFERER' => 'https://example.com'.b))
+      request.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 11_3) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1 Safari/605.1.15'
+
+      # asserts - visit should be saved but IpCrawlerJob should not be enqueued (default behavior)
+      visit = nil
+      assert_no_enqueued_jobs do
+        visit = Visit.parse_and_save(rails_url_shortener_urls(:one), request)
+      end
+      assert visit
+      assert_equal visit.ip, request.ip
+      assert_equal visit.user_agent, request.user_agent
     end
   end
 end

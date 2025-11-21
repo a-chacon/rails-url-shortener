@@ -13,3 +13,4 @@ RailsUrlShortener.key_length = 6                    # Key length for random gene
 RailsUrlShortener.minimum_key_length = 3            # minimum permited for a key
 RailsUrlShortener.save_bots_visits = false          # if save bots visits
 RailsUrlShortener.save_visits = true                # if save visits
+RailsUrlShortener.save_ip_geocode = false           # if save IP geocode information (set to true to enable IpCrawlerJob)
