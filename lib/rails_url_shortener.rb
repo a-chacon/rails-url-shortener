@@ -42,6 +42,12 @@ module RailsUrlShortener
   mattr_accessor :save_bots_visits, default: true
 
   mattr_accessor :save_visits, default: true
+
+  ##
+  # if save ip geocode information on db, this will trigger IpCrawlerJob
+  # to fetch IP geolocation data from external API
+  # by default this is disabled - set to true to enable IP geocoding
+  mattr_accessor :save_ip_geocode, default: false
 end
 
 ActiveSupport.on_load(:active_record) do

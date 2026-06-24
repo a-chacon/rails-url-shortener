@@ -5,7 +5,11 @@ module RailsUrlShortener
     include Engine.routes.url_helpers
     include ActiveJob::TestHelper
 
+    teardown { RailsUrlShortener.save_ip_geocode = false }
+
     test 'show' do
+      # IP geocoding is opt-in (default off); enable it to assert the job is enqueued
+      RailsUrlShortener.save_ip_geocode = true
       assert_difference 'Visit.count', 1 do
         assert_enqueued_with(job: IpCrawlerJob) do
           get "/shortener/#{rails_url_shortener_urls(:one).key}", headers: {

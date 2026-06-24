@@ -52,7 +52,7 @@ module RailsUrlShortener
         referer: request.headers['Referer']
       )
 
-      IpCrawlerJob.perform_later(visit)
+      IpCrawlerJob.perform_later(visit) if RailsUrlShortener.save_ip_geocode
       visit
     end
     # rubocop:enable Metrics/AbcSize
