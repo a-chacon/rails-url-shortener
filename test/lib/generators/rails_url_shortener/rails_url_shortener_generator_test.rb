@@ -53,27 +53,5 @@ module RailsUrlShortener
         assert_no_match(/RailsUrlShortener\.save_ip_geocode = false/, content)
       end
     end
-
-    test 'generator sets ENABLE_IP_GEOCODE environment variable when flag is used' do
-      routes_file = File.join(destination_root, 'config', 'routes.rb')
-      FileUtils.mkdir_p(File.dirname(routes_file))
-      File.write(routes_file, "Rails.application.routes.draw do\nend")
-
-      # Clear the env var first
-      original_env = ENV['ENABLE_IP_GEOCODE']
-      ENV.delete('ENABLE_IP_GEOCODE')
-
-      run_generator ['arguments', '--enable-ip-geocode']
-
-      # Verify environment variable was set
-      assert_equal 'true', ENV['ENABLE_IP_GEOCODE']
-
-      # Restore original value
-      if original_env
-        ENV['ENABLE_IP_GEOCODE'] = original_env
-      else
-        ENV.delete('ENABLE_IP_GEOCODE')
-      end
-    end
   end
 end

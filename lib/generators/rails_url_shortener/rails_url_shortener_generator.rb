@@ -21,7 +21,7 @@ class RailsUrlShortenerGenerator < Rails::Generators::Base
         puts 'Note: IP geocode migration will be created (--enable-ip-geocode flag)'
       else
         ENV['ENABLE_IP_GEOCODE'] = 'false' unless ENV['ENABLE_IP_GEOCODE']
-        puts 'Note: IP geocode migration will be skipped by default. Use --enable-ip-geocode flag to enable IP geocoding.'
+        puts 'Note: IP geocode migration skipped. Use --enable-ip-geocode to enable it.'
       end
       rake 'rails_url_shortener:install:migrations'
       rake 'db:migrate'
@@ -39,10 +39,10 @@ class RailsUrlShortenerGenerator < Rails::Generators::Base
     copy_file 'initializer.rb', 'config/initializers/rails_url_shortener.rb'
 
     # Update initializer if IP geocoding is enabled
-    if options[:enable_ip_geocode]
-      gsub_file 'config/initializers/rails_url_shortener.rb',
-                /RailsUrlShortener\.save_ip_geocode = false/,
-                'RailsUrlShortener.save_ip_geocode = true'
-    end
+    return unless options[:enable_ip_geocode]
+
+    gsub_file 'config/initializers/rails_url_shortener.rb',
+              /RailsUrlShortener\.save_ip_geocode = false/,
+              'RailsUrlShortener.save_ip_geocode = true'
   end
 end
